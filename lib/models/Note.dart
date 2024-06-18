@@ -13,13 +13,13 @@ class Note{
     required this.updated,
   });
 
-  factory Note.fromJson(Map<String, dynamic> json){
-    return Note(
-      id: json['id'],
-      title: json['title'],
-      content: json['content'],
-      created: DateTime.parse(json['created']),
-      updated: DateTime.parse(json['updated']),
-    );
-  } 
+factory Note.fromJson(Map<String, dynamic> json){
+  return Note(
+    id: json['id'] ?? 0,
+    title: json['title'] ?? '',
+    content: json['content'] ?? '',
+    created: json['created'] != null ? DateTime.parse(json['created']) : DateTime.now(),
+    updated: json['updated'] != null ? DateTime.parse(json['updated']) : DateTime.now(),
+  );
+}
 }
